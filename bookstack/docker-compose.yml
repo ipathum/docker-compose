@@ -1,0 +1,33 @@
+---
+services:
+  bookstack:
+    image: lscr.io/linuxserver/bookstack
+    container_name: bookstack
+    networks:
+      - your-network # <---Add your network name here
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      - PUID=1001 # <-- Add your PUID here
+      - PGID=1001 # <-- Add your PGID here
+      - TZ=Asia/Riyadh # <-- Add your TZ time zone here
+      - DB_HOST=10.8.1.11 # <-- Your DB Host here
+      - DB_PORT=3306
+      - DB_USER=bookstack # <-- Your new DB User here
+      - DB_PASS=123456 # <-- Your new DB Pass here
+      - DB_DATABASE=bookstack # <-- Your new DB name here
+      - APP_URL=https://wiki.yourdomain.com # <-- Your domain name here
+    volumes:
+      - ./bookstack_app_data:/config
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bookstack.entrypoints=http"
+      - "traefik.http.routers.bookstack.rule=Host(`wiki.yourdomain.com`)" # <-- Your domain name here
+      - "traefik.http.routers.bookstack-secure.entrypoints=https"
+      - "traefik.http.routers.bookstack-secure.rule=Host(`wiki.yourdomain.com`)" # <-- Your domain name here
+      - "traefik.http.routers.bookstack-secure.tls=true"
+      - "traefik.http.services.bookstack.loadbalancer.server.port=80"
+networks:
+  your-network: # <---Add your network name here
+    external: true
