@@ -1,0 +1,32 @@
+---
+
+services:
+  adguardhome:
+    image: adguard/adguardhome
+    container_name: adguardhome # <---You can change container name here if you like
+    ports:
+      - 503:53/udp
+    volumes:
+      - ./config:/opt/adguardhome/conf
+      - ./work:/opt/adguardhome/work
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - your-network # <---Add your network name here
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.adguardhome.entrypoints=http"
+      - "traefik.http.routers.adguardhome.rule=Host(`adguard.yourdomain.com`)" # <---Add your domain name here
+      - "traefik.http.middlewares.adguardhome-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.adguardhome.middlewares=adguardhome-https-redirect"
+      - "traefik.http.routers.adguardhome-secure.entrypoints=https"
+      - "traefik.http.routers.adguardhome-secure.rule=Host(`adguard.yourdomain.com`)" # <---Add your domain name here
+      - "traefik.http.routers.adguardhome-secure.tls=true"
+      - "traefik.http.routers.adguardhome-secure.service=adguardhome"
+      - "traefik.http.services.adguardhome.loadbalancer.server.port=80"
+      - "traefik.docker.network=wireguard_wg-easy"
+
+networks:
+  your-network: # <---Add your network name here
+    external: true
