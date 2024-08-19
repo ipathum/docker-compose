@@ -8,6 +8,8 @@ MariaDB is a community-developed, commercially supported fork of the MySQL relat
 
 If you’re using Docker compose you can do with SSH with bellow or use filebrowser app.
 
+For get static ip check your network and get unused ip adress.
+
 > mkdir mariadb
 
 > cd mariadb
