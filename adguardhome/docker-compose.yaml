@@ -3,7 +3,7 @@
 services:
   adguardhome:
     image: adguard/adguardhome
-    container_name: adguardhome # <---You can change container name here if you like
+    container_name: adguardhome
     ports:
       - 503:53/udp
     volumes:
