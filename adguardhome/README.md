@@ -2,6 +2,8 @@
 
 ![Welcome](https://www.myhome.zone/wp-content/uploads/2021/05/Beitragsbild_AdguardHome.png)
 
+# Docker Adguard Home with Traefik
+
 AdGuard Home is a network-wide software for blocking ads & tracking. After you set it up,
 it’ll cover ALL your home devices, and you don’t need any client-side software for that. 
 With the rise of Internet-Of-Things and connected devices, 
