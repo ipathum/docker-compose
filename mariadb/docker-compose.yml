@@ -1,0 +1,26 @@
+---
+services:
+  mariadb:
+    image: lscr.io/linuxserver/mariadb:latest
+    container_name: mariadb
+    environment:
+      - PUID=1000 # <-- Add your PUID here
+      - PGID=1000 # <-- Add your PGID here
+      - TZ=Asia/Riyadh  # <-- Add your TZ time zone here
+      - MYSQL_ROOT_PASSWORD=123456 # <-- Your DB root Pass here
+      - MYSQL_DATABASE=newdb # <-- Your new DB name here
+      - MYSQL_USER=newdbuser # <-- Your new DB user here
+      - MYSQL_PASSWORD=12345 # <-- Your new DB Pass here
+    volumes:
+      - ./config:/config
+    ports:
+      - 3306:3306
+    networks:
+      your-network: # <---Add your network name here
+        ipv4_address: 10.8.1.11 # <-- Give static ip for this container
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+networks:
+  your-network: # <---Add your network name here
+    external: true
