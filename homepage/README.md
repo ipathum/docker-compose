@@ -2,7 +2,7 @@
 
 ![Welcome](https://gethomepage.dev/v0.8.13/assets/banner_light%402x.png#only-dark)
 
-# Docker authentik with Traefik
+# Docker homepage with Traefik and authentic
 
 homepage is a modern, fully static, fast, secure fully proxied, highly customizable application dashboard with integrations for over 100 services and translations into multiple languages. Easily configured via YAML files or through docker label discovery.
 # Running the container
