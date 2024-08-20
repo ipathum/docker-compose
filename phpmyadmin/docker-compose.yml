@@ -25,7 +25,7 @@ services:
       - "traefik.http.routers.phpmyadmin-secure.tls=true"
       - "traefik.http.routers.phpmyadmin-secure.service=phpmyadmin"
       - "traefik.http.services.phpmyadmin.loadbalancer.server.port=80"
-      - "traefik.docker.network=wireguard_wg-easy" # <---Add your network name here
+      - "traefik.docker.network=your-network" # <---Add your network name here
 networks:
   your-network: # <---Add your network name here
     external: true
