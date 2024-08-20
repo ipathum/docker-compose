@@ -1,0 +1,86 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/services
+
+- Proxy and DNS:
+    - PiHole:
+        icon: pi-hole.svg # icons found here https://github.com/walkxcode/dashboard-icons
+        href: https://pihole.yourdomain.com/admin # <-- Change your domain name here
+        description: My Pihole DNS Manager
+        widget:
+          type: pihole
+          url: https://pihole.yourdomain.com # <-- Change your domain name here
+          key: {{HOMEPAGE_VAR_PHOLE_KEY}} # <-- this will add to .env file
+    - Traefik:
+        icon: traefik.png
+        href: https://traefik.yourdomain.com # <-- Change your domain name here
+        description: My Traefik Proxy Manager
+        widget:
+          type: traefik
+          url: https://traefik.yourdomain.com # <-- Change your domain name here
+          username: admin # <-- your user name here
+          password: 123456 # <-- your password here
+    - WireGuard VPN:
+        icon: wireguard.png
+        href: https://wg.yourdomain.com # <-- Change your domain name here
+        description: WireGuard VPN Manager
+        widget:
+          type: wgeasy
+          url: https://wg.yourdomain.com # <-- Change your domain name here
+          password: 123456 # <-- your password here
+
+- Security & Identity:
+    - Authentik:
+        href: https://auth.yourdomain.com # <-- Change your domain name here
+        description: My Authentik Dash
+        icon: authentik.png
+        widget:
+            type: authentik
+            url: https://auth.yourdomain.com # <-- Change your domain name here
+            key: {{HOMEPAGE_VAR_AUTHENTIK_KEY}} # <-- this will add to .env file
+
+- Management:
+    - Portainer:
+        href: https://pt.yourdomain.com # <-- Change your domain name here
+        icon: portainer.png
+        description: Dockr Management System
+        widget:
+            type: portainer
+            url: https://pt.yourdomain.com # <-- Change your domain name here
+            env: 2
+            key: {{HOMEPAGE_VAR_PORTAINER_KEY}} # <-- this will add to .env file
+    - File Manager:
+        href: https://file.yourdomain.com # <-- Change your domain name here
+        icon: filebrowser.png
+        description: File Browser
+    - Nextcloud:
+        href: https://cloud.yourdomain.com # <-- Change your domain name here
+        icon: nextcloud.png
+        description: Cloud File Storage
+        widget:
+            type: nextcloud
+            url: https://cloud.yourdomain.com # <-- Change your domain name here
+            username: admin # <-- your user name here
+            password: 123456 # <-- your password here
+    - phpmyadmin:
+        href: https://phpmyadmin.yourdomain.com # <-- Change your domain name here
+        icon: phpmyadmin.png
+        description: sql Management Center        
+- Monitoring:
+    - UptimeKuma:
+        href: https://up.yourdomain.com # <-- Change your domain name here
+        description: My Uptime Monitor
+        icon: uptime-kuma.png
+        widget:
+            type: uptimekuma
+            url: https://up.yourdomain.com # <-- Change your domain name here
+            slug: internal
+    - qBittorrent:
+        href: https://torrent.yourdomain.com # <-- Change your domain name here
+        description: My Cloud Torrent Downloader
+        icon: qbittorrent.png
+        widget:
+            type: qbittorrent
+            url: https://torrent.yourdomain.com # <-- Change your domain name here
+            username: admin # <-- your user name here
+            password: 123456 # <-- your password here

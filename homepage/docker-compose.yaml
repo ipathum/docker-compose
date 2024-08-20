@@ -1,0 +1,32 @@
+---
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    networks:
+      - your-network # <---Add your network name here
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ./config:/app/config
+      - ./images:/app/images
+      - ./icons:/app/icons
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.authentik-server.entrypoints=http"
+      - "traefik.http.routers.authentik-server-secure.entrypoints=https"
+      - "traefik.http.routers.homepage.rule=Host(`home.yourdomain.com`)" # <-- Your domain name here
+      - "traefik.http.routers.authentik-server-secure.rule=Host(`home.yourdomain.com`)" # <-- Your domain name here
+      # - "traefik.http.routers.homepage.middlewares=authentik@file" # <-- Turn on if you have authentik
+      # - "traefik.http.routers.homepage-secure.middlewares=authentik@file" # <-- Turn on if you have authentik
+      - "traefik.http.routers.homepage.tls=true"
+      - "traefik.http.services.homepage.loadbalancer.server.port=3000"
+      - "traefik.docker.network=your-network" # <---Add your network name here
+    environment:
+      - HOMEPAGE_VAR_AUTHENTIK_KEY=${HOMEPAGE_VAR_AUTHENTIK_KEY} # <-- this will add to .env file
+      - HOMEPAGE_VAR_PHOLE_KEY=${HOMEPAGE_VAR_PHOLE_KEY} # <-- this will add to .env file
+      - HOMEPAGE_VAR_PORTAINER_KEY=${HOMEPAGE_VAR_PORTAINER_KEY} # <-- this will add to .env file
+networks:
+  your-network: # <---Add your network name here
+    external: true

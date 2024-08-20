@@ -1,0 +1,20 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/service-widgets
+- resources:
+    cpu: true
+    memory: true
+    disk: /
+- logo:
+    icon: https://isoft.com.lk/upload/logo.png # <-- you can change your logo here
+- search:
+    provider: duckduckgo # <-- you can change search provider here google, duckduckgo, bing, baidu, brave or custom
+    target: _blank
+    showSearchSuggestions: true
+- datetime:
+    locale: en-GB # <-- you can change date and time format here
+    text_size: xl # <-- you can change size of time and date, 4xl, 3xl, 2xl, xl, md, sm, xs
+    format:
+      hour12: true # <-- change 12 hour or 24 hour ture/false
+      dateStyle: short # long or short
+      timeStyle: short # long or short
