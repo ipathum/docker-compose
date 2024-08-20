@@ -11,7 +11,7 @@ If you’re using Docker compose you can do with SSH with bellow or use filebrow
 
 for bookstack you need to make new database, please make new DB from phpmyadmin. if you don't have DB server & phpmyadmin check here 
 
-For DB Server: [mariadb](https://github.com/ipathum/docker-compose_with_treafik/blob/106638d2012b358ff9a9359ca6dcec71e8c9eb2e/mariadb/README.md)
+For DB Server: [mariadb](https://github.com/ipathum/docker-compose_with_treafik/blob/main/mariadb/README.md)
 
 For phpmyadmin: [myphpadmin](https://github.com/ipathum/docker-compose_with_treafik/blob/106638d2012b358ff9a9359ca6dcec71e8c9eb2e/phpmyadmin/README.md)
 
