@@ -12,6 +12,17 @@ This Repository **docker-files** is my personal docker compose collection. Here 
 
 I created them as free resources to be used in your specific use cases. If you're searching for detailed, in-depth tutorials on some tools or technologies, check out my [YouTube Channel](https://www.youtube.com/@isoftp).
 
+For Get PUID & PGID run this command in terminal.
+
+> id
+
+For get your TZ time zone visit here
+[list of time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+
+For create a new network
+
+> docker network create yournetwork # change your network name
+
 ## Contribution
 
 If you’d like to contribute to this project, reach out to me on social media [Whatsapp](https://wa.me/94702152539), or create a pull request for the necessary changes.
