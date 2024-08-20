@@ -13,7 +13,7 @@ for bookstack you need to make new database, please make new DB from phpmyadmin.
 
 For DB Server: [mariadb](https://github.com/ipathum/docker-compose_with_treafik/blob/main/mariadb/README.md)
 
-For phpmyadmin: [myphpadmin](https://github.com/ipathum/docker-compose_with_treafik/blob/106638d2012b358ff9a9359ca6dcec71e8c9eb2e/phpmyadmin/README.md)
+For phpmyadmin: [myphpadmin](https://github.com/ipathum/docker-compose_with_treafik/blob/main/phpmyadmin/README.md)
 
 > mkdir bookstack
 
