@@ -1,0 +1,31 @@
+services:
+  phpmyadmin:
+    image: lscr.io/linuxserver/phpmyadmin:latest
+    container_name: phpmyadmin
+    networks:
+      - your-network # <---Add your network name here
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      - PUID=1000 # <-- Add your PUID here
+      - PGID=1000 # <-- Add your PGID here
+      - TZ=Asia/Riyadh # <-- Add your TZ time zone here
+      - PMA_ARBITRARY=1
+    volumes:
+      - ./config:/config
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.phpmyadmin.entrypoints=http"
+      - "traefik.http.routers.phpmyadmin.rule=Host(`phpmyadmin.yourdomain.com`)" # <-- Your domain name here
+      - "traefik.http.middlewares.phpmyadmin-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.phpmyadmin.middlewares=phpmyadmin-https-redirect"
+      - "traefik.http.routers.phpmyadmin-secure.entrypoints=https"
+      - "traefik.http.routers.phpmyadmin-secure.rule=Host(`phpmyadmin.yourdomain.com`)" # <-- Your domain name here
+      - "traefik.http.routers.phpmyadmin-secure.tls=true"
+      - "traefik.http.routers.phpmyadmin-secure.service=phpmyadmin"
+      - "traefik.http.services.phpmyadmin.loadbalancer.server.port=80"
+      - "traefik.docker.network=wireguard_wg-easy" # <---Add your network name here
+networks:
+  your-network: # <---Add your network name here
+    external: true
